@@ -1585,3 +1585,30 @@ input {
     color: #166534;
     background: #DCFCE7;
 }
+
+/* ==================================================
+   MENSAJES DE RECUPERACIÓN DE CONTRASEÑA
+================================================== */
+
+.mensaje-recuperar {
+    margin-top: 15px;
+    padding: 0;
+    font-size: 14px;
+    border-radius: 8px;
+}
+
+.mensaje-recuperar:empty {
+    display: none;
+}
+
+.mensaje-recuperar.error {
+    padding: 12px;
+    color: #B91C1C;
+    background: #FEE2E2;
+}
+
+.mensaje-recuperar.exito {
+    padding: 12px;
+    color: #166534;
+    background: #DCFCE7;
+}
