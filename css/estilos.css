@@ -805,3 +805,502 @@ input {
         flex-direction: column;
     }
 }
+/* =====================================================
+   16. PANTALLA DE REGISTRO
+   ===================================================== */
+
+.pagina-registro {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background: var(--fondo);
+}
+
+.registro-contenedor {
+    width: min(1100px, 92%);
+    margin: auto;
+    display: grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    background: var(--blanco);
+    border: 1px solid var(--borde);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: var(--sombra);
+}
+
+/* Panel de presentación */
+
+.registro-presentacion {
+    padding: 45px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: var(--azul);
+    color: var(--blanco);
+}
+
+.registro-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: fit-content;
+    max-width: 100%;
+    padding: 14px 50px;
+    margin: 0 auto 100px;
+    background: var(--blanco);
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.12);
+}
+
+.registro-logo img {
+    width: 170px;
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+
+.registro-presentacion h1 {
+    margin-bottom: 18px;
+    font-size: 30px;
+    line-height: 1.3;
+    text-align: center;
+}
+
+.registro-presentacion p {
+    margin-bottom: 30px;
+    color: #DBEAFE;
+    font-size: 15px;
+    line-height: 1.7;
+    text-align: center;
+}
+
+.registro-beneficios {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.registro-beneficios span {
+    font-size: 14px;
+    color: var(--blanco);
+}
+
+/* Formulario */
+
+.registro-formulario {
+    padding: 40px 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.registro-titulo {
+    margin-bottom: 25px;
+}
+
+.registro-titulo h2 {
+    margin-bottom: 8px;
+    color: var(--azul-oscuro);
+    font-size: 28px;
+}
+
+.registro-titulo p {
+    color: var(--texto-secundario);
+    font-size: 14px;
+}
+
+.campo-registro {
+    margin-bottom: 17px;
+}
+
+.campo-registro label {
+    display: block;
+    margin-bottom: 7px;
+    color: var(--texto);
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.campo-registro input {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid var(--borde);
+    border-radius: 8px;
+    outline: none;
+    background: var(--blanco);
+    color: var(--texto);
+}
+
+.campo-registro input:focus {
+    border-color: var(--azul);
+    box-shadow: 0 0 0 3px rgba(30, 58, 138, 0.10);
+}
+
+.campo-registro input::placeholder {
+    color: #94A3B8;
+}
+
+/* Términos y condiciones */
+
+.registro-terminos {
+    margin: 5px 0 22px;
+    color: var(--texto-secundario);
+    font-size: 13px;
+}
+
+.registro-terminos label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.registro-terminos input {
+    accent-color: var(--azul);
+}
+
+/* Botón */
+
+.btn-registro {
+    width: 100%;
+    padding: 14px;
+    border: none;
+    border-radius: 8px;
+    background: var(--azul);
+    color: var(--blanco);
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-registro:hover {
+    background: var(--azul-oscuro);
+}
+
+/* Enlaces inferiores */
+
+.registro-login {
+    margin-top: 22px;
+    text-align: center;
+    color: var(--texto-secundario);
+    font-size: 13px;
+}
+
+.registro-login a {
+    margin-left: 4px;
+    color: var(--azul);
+    font-weight: 700;
+}
+
+.registro-login a:hover {
+    text-decoration: underline;
+}
+
+.registro-volver {
+    display: block;
+    margin-top: 20px;
+    text-align: center;
+    color: var(--texto-secundario);
+    font-size: 13px;
+}
+
+.registro-volver:hover {
+    color: var(--azul);
+}
+
+/* Pie de página */
+
+.registro-footer {
+    padding: 20px;
+    text-align: center;
+    color: var(--texto-secundario);
+    font-size: 12px;
+}
+
+/* =====================================================
+   17. RESPONSIVE DEL REGISTRO
+   ===================================================== */
+
+@media (max-width: 900px) {
+    .registro-contenedor {
+        grid-template-columns: 1fr 1.2fr;
+    }
+
+    .registro-presentacion {
+        padding: 30px;
+    }
+
+    .registro-formulario {
+        padding: 35px;
+    }
+}
+
+@media (max-width: 760px) {
+    .registro-contenedor {
+        grid-template-columns: 1fr;
+        margin: 25px auto;
+    }
+
+    .registro-presentacion {
+        padding: 35px;
+    }
+
+    .registro-presentacion h1 {
+        font-size: 27px;
+    }
+
+    .registro-formulario {
+        padding: 35px;
+    }
+}
+
+@media (max-width: 480px) {
+    .registro-contenedor {
+        width: 94%;
+    }
+
+    .registro-presentacion {
+        padding: 30px 25px;
+    }
+
+    .registro-formulario {
+        padding: 30px 25px;
+    }
+
+    .registro-logo img {
+        width: 150px;
+    }
+}
+/* =====================================================
+   18. PANTALLA DE RECUPERACIÓN DE CONTRASEÑA
+   ===================================================== */
+
+.pagina-recuperar {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background: var(--fondo);
+}
+
+.recuperar-contenedor {
+    width: min(1050px, 92%);
+    margin: auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background: var(--blanco);
+    border: 1px solid var(--borde);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: var(--sombra);
+}
+
+/* Panel de presentación */
+
+.recuperar-presentacion {
+    padding: 50px 45px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: var(--azul);
+    color: var(--blanco);
+}
+
+.recuperar-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: fit-content;
+    max-width: 100%;
+    padding: 14px 22px;
+    margin: 0 auto 35px;
+    background: var(--blanco);
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.12);
+}
+
+.recuperar-logo img {
+    width: 170px;
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+
+.recuperar-presentacion h1 {
+    margin-bottom: 18px;
+    font-size: 30px;
+    line-height: 1.3;
+    text-align: center;
+}
+
+.recuperar-presentacion p {
+    margin-bottom: 30px;
+    color: #DBEAFE;
+    font-size: 15px;
+    line-height: 1.7;
+    text-align: center;
+}
+
+.recuperar-beneficios {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.recuperar-beneficios span {
+    font-size: 14px;
+    color: var(--blanco);
+}
+
+/* Formulario */
+
+.recuperar-formulario {
+    padding: 50px 45px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.recuperar-titulo {
+    margin-bottom: 30px;
+}
+
+.recuperar-titulo h2 {
+    margin-bottom: 10px;
+    color: var(--azul-oscuro);
+    font-size: 28px;
+}
+
+.recuperar-titulo p {
+    color: var(--texto-secundario);
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.campo-recuperar {
+    margin-bottom: 25px;
+}
+
+.campo-recuperar label {
+    display: block;
+    margin-bottom: 8px;
+    color: var(--texto);
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.campo-recuperar input {
+    width: 100%;
+    padding: 13px 15px;
+    border: 1px solid var(--borde);
+    border-radius: 8px;
+    outline: none;
+    background: var(--blanco);
+    color: var(--texto);
+}
+
+.campo-recuperar input:focus {
+    border-color: var(--azul);
+    box-shadow: 0 0 0 3px rgba(30, 58, 138, 0.10);
+}
+
+.campo-recuperar input::placeholder {
+    color: #94A3B8;
+}
+
+/* Botón */
+
+.btn-recuperar {
+    width: 100%;
+    padding: 14px;
+    border: none;
+    border-radius: 8px;
+    background: var(--azul);
+    color: var(--blanco);
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-recuperar:hover {
+    background: var(--azul-oscuro);
+}
+
+/* Enlaces */
+
+.recuperar-login {
+    margin-top: 25px;
+    text-align: center;
+    color: var(--texto-secundario);
+    font-size: 13px;
+}
+
+.recuperar-login a {
+    margin-left: 4px;
+    color: var(--azul);
+    font-weight: 700;
+}
+
+.recuperar-login a:hover {
+    text-decoration: underline;
+}
+
+.recuperar-volver {
+    display: block;
+    margin-top: 22px;
+    text-align: center;
+    color: var(--texto-secundario);
+    font-size: 13px;
+}
+
+.recuperar-volver:hover {
+    color: var(--azul);
+}
+
+/* Pie de página */
+
+.recuperar-footer {
+    padding: 20px;
+    text-align: center;
+    color: var(--texto-secundario);
+    font-size: 12px;
+}
+
+/* =====================================================
+   19. RESPONSIVE DE RECUPERACIÓN
+   ===================================================== */
+
+@media (max-width: 760px) {
+    .recuperar-contenedor {
+        grid-template-columns: 1fr;
+        margin: 25px auto;
+    }
+
+    .recuperar-presentacion {
+        padding: 35px;
+    }
+
+    .recuperar-presentacion h1 {
+        font-size: 27px;
+    }
+
+    .recuperar-formulario {
+        padding: 40px 35px;
+    }
+}
+
+@media (max-width: 480px) {
+    .recuperar-contenedor {
+        width: 94%;
+    }
+
+    .recuperar-presentacion {
+        padding: 30px 25px;
+    }
+
+    .recuperar-formulario {
+        padding: 35px 25px;
+    }
+
+    .recuperar-logo img {
+        width: 150px;
+    }
+}
