@@ -2078,3 +2078,98 @@ input {
     }
 
 }
+
+
+/* ==================================================
+   FORMULARIO DE REGISTRO DE PRODUCTOS
+================================================== */
+
+.formulario-producto {
+    background: var(--fondo);
+    border: 1px solid var(--borde);
+    border-radius: 12px;
+    padding: 24px;
+    margin-bottom: 30px;
+}
+
+.formulario-producto[hidden] {
+    display: none;
+}
+
+.formulario-producto-titulo {
+    margin-bottom: 22px;
+}
+
+.formulario-producto-titulo h2 {
+    color: var(--azul-oscuro);
+    font-size: 20px;
+    margin-bottom: 6px;
+}
+
+.formulario-producto-titulo p {
+    color: var(--texto-secundario);
+    font-size: 14px;
+}
+
+.formulario-producto-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+}
+
+.campo-producto {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.campo-producto label {
+    color: var(--texto);
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.campo-producto input,
+.campo-producto select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--borde);
+    border-radius: 8px;
+    background: var(--blanco);
+    color: var(--texto);
+    font-size: 14px;
+    outline: none;
+}
+
+.campo-producto input:focus,
+.campo-producto select:focus {
+    border-color: var(--azul);
+    box-shadow: 0 0 0 3px rgba(30, 58, 138, 0.10);
+}
+
+.formulario-producto-acciones {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    margin-top: 24px;
+}
+
+@media (max-width: 768px) {
+
+    .formulario-producto {
+        padding: 18px;
+    }
+
+    .formulario-producto-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .formulario-producto-acciones {
+        flex-direction: column-reverse;
+    }
+
+    .formulario-producto-acciones button {
+        width: 100%;
+    }
+
+}

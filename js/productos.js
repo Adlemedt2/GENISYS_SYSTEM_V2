@@ -13,6 +13,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const filtrarTipo = document.getElementById("filtrarTipo");
     const btnLimpiarFiltros = document.getElementById("btnLimpiarFiltros");
     const btnNuevoProducto = document.getElementById("btnNuevoProducto");
+    const btnCancelarProducto = document.getElementById("btnCancelarProducto");
 
     const listaProductos = document.getElementById("listaProductos");
     const mensajeProductos = document.getElementById("mensajeProductos");
@@ -21,12 +22,23 @@ document.addEventListener("DOMContentLoaded", function () {
     const totalTerminados = document.getElementById("totalTerminados");
     const totalInsumos = document.getElementById("totalInsumos");
 
+    const formularioProducto = document.getElementById("formularioProducto");
+    const formNuevoProducto = document.getElementById("formNuevoProducto");
+
+    const nombreProducto = document.getElementById("nombreProducto");
+    const tipoProducto = document.getElementById("tipoProducto");
+    const categoriaProducto = document.getElementById("categoriaProducto");
+    const unidadProducto = document.getElementById("unidadProducto");
+    const precioProducto = document.getElementById("precioProducto");
+
 
     // ==================================================
-    // DATOS DE EJEMPLO
+    // ALMACENAMIENTO LOCAL
     // ==================================================
 
-    const productos = [
+    const CLAVE_PRODUCTOS = "genisys_productos";
+
+    const productosIniciales = [
 
         {
             id: 1,
@@ -36,7 +48,6 @@ document.addEventListener("DOMContentLoaded", function () {
             unidad: "Unidad",
             precio: 2500
         },
-
         {
             id: 2,
             nombre: "Empanada de carne",
@@ -45,7 +56,6 @@ document.addEventListener("DOMContentLoaded", function () {
             unidad: "Unidad",
             precio: 3000
         },
-
         {
             id: 3,
             nombre: "Pastelito de pollo",
@@ -54,7 +64,6 @@ document.addEventListener("DOMContentLoaded", function () {
             unidad: "Unidad",
             precio: 3500
         },
-
         {
             id: 4,
             nombre: "Panzerotti",
@@ -63,7 +72,6 @@ document.addEventListener("DOMContentLoaded", function () {
             unidad: "Unidad",
             precio: 5000
         },
-
         {
             id: 5,
             nombre: "Harina de trigo",
@@ -72,7 +80,6 @@ document.addEventListener("DOMContentLoaded", function () {
             unidad: "Kilogramo",
             precio: 4500
         },
-
         {
             id: 6,
             nombre: "Queso mozzarella",
@@ -81,7 +88,6 @@ document.addEventListener("DOMContentLoaded", function () {
             unidad: "Kilogramo",
             precio: 18000
         },
-
         {
             id: 7,
             nombre: "Carne molida",
@@ -90,7 +96,6 @@ document.addEventListener("DOMContentLoaded", function () {
             unidad: "Kilogramo",
             precio: 22000
         },
-
         {
             id: 8,
             nombre: "Aceite vegetal",
@@ -103,6 +108,69 @@ document.addEventListener("DOMContentLoaded", function () {
     ];
 
 
+    // Recuperar registros guardados o cargar datos iniciales
+    function cargarProductos() {
+
+        try {
+
+            const datosGuardados = localStorage.getItem(CLAVE_PRODUCTOS);
+
+            if (datosGuardados !== null) {
+
+                const datos = JSON.parse(datosGuardados);
+
+                if (Array.isArray(datos)) {
+                    return datos;
+                }
+
+            }
+
+        } catch (error) {
+
+            console.error("Error al recuperar los productos:", error);
+
+        }
+
+        return [...productosIniciales];
+
+    }
+
+    let productos = cargarProductos();
+
+
+    // Guardar productos en el navegador
+    function guardarProductos() {
+
+        try {
+
+            localStorage.setItem(CLAVE_PRODUCTOS, JSON.stringify(productos));
+            return true;
+
+        } catch (error) {
+
+            console.error("Error al guardar los productos:", error);
+            return false;
+
+        }
+
+    }
+
+
+    // ==================================================
+    // FORMATEAR MONEDA
+    // ==================================================
+
+    function formatearMoneda(valor) {
+
+        return new Intl.NumberFormat("es-CO", {
+            style: "currency",
+            currency: "COP",
+            maximumFractionDigits: 0
+        }).format(valor);
+
+    }
+
+
     // ==================================================
     // MOSTRAR PRODUCTOS
     // ==================================================
@@ -113,64 +181,50 @@ document.addEventListener("DOMContentLoaded", function () {
 
         if (datos.length === 0) {
 
-            listaProductos.innerHTML = `
-                <tr>
-                    <td colspan="5">No se encontraron productos.</td>
-                </tr>
-            `;
+            const fila = document.createElement("tr");
+            const celda = document.createElement("td");
 
-            mensajeProductos.textContent = "No hay registros que coincidan con la búsqueda.";
+            celda.colSpan = 5;
+            celda.textContent = "No se encontraron productos.";
+
+            fila.appendChild(celda);
+            listaProductos.appendChild(fila);
+
+            mensajeProductos.textContent =
+                "No hay registros que coincidan con la búsqueda.";
+
             return;
 
         }
-
-        mensajeProductos.textContent = `Se encontraron ${datos.length} productos.`;
 
         datos.forEach(function (producto) {
 
             const fila = document.createElement("tr");
 
-            const nombre = document.createElement("td");
-            nombre.textContent = producto.nombre;
+            const valores = [
+                producto.nombre,
+                producto.tipo === "terminado"
+                    ? "Producto terminado"
+                    : "Materia prima / Insumo",
+                producto.categoria,
+                producto.unidad,
+                formatearMoneda(producto.precio)
+            ];
 
-            const tipo = document.createElement("td");
-            tipo.textContent = producto.tipo === "terminado"
-                ? "Producto terminado"
-                : "Materia prima / Insumo";
+            valores.forEach(function (valor) {
 
-            const categoria = document.createElement("td");
-            categoria.textContent = producto.categoria;
+                const celda = document.createElement("td");
+                celda.textContent = valor;
+                fila.appendChild(celda);
 
-            const unidad = document.createElement("td");
-            unidad.textContent = producto.unidad;
-
-            const precio = document.createElement("td");
-            precio.textContent = formatearMoneda(producto.precio);
-
-            fila.appendChild(nombre);
-            fila.appendChild(tipo);
-            fila.appendChild(categoria);
-            fila.appendChild(unidad);
-            fila.appendChild(precio);
+            });
 
             listaProductos.appendChild(fila);
 
         });
 
-    }
-
-
-    // ==================================================
-    // FORMATEAR VALORES EN PESOS COLOMBIANOS
-    // ==================================================
-
-    function formatearMoneda(valor) {
-
-        return new Intl.NumberFormat("es-CO", {
-            style: "currency",
-            currency: "COP",
-            maximumFractionDigits: 0
-        }).format(valor);
+        mensajeProductos.textContent =
+            `Se encontraron ${datos.length} productos.`;
 
     }
 
@@ -223,6 +277,116 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     // ==================================================
+    // ABRIR FORMULARIO
+    // ==================================================
+
+    function abrirFormulario() {
+
+        formularioProducto.hidden = false;
+        nombreProducto.focus();
+
+    }
+
+
+    // ==================================================
+    // CERRAR FORMULARIO
+    // ==================================================
+
+    function cerrarFormulario() {
+
+        formNuevoProducto.reset();
+        formularioProducto.hidden = true;
+
+    }
+
+
+    // ==================================================
+    // REGISTRAR NUEVO PRODUCTO
+    // ==================================================
+
+    formNuevoProducto.addEventListener("submit", function (evento) {
+
+        evento.preventDefault();
+
+        const nombre = nombreProducto.value.trim();
+        const tipo = tipoProducto.value;
+        const categoria = categoriaProducto.value.trim();
+        const unidad = unidadProducto.value;
+        const precio = Number(precioProducto.value);
+
+        if (
+            nombre === "" ||
+            tipo === "" ||
+            categoria === "" ||
+            unidad === "" ||
+            precioProducto.value === "" ||
+            !Number.isFinite(precio) ||
+            precio < 0
+        ) {
+
+            mensajeProductos.textContent =
+                "Verifica que todos los campos estén correctamente diligenciados.";
+
+            return;
+
+        }
+
+        const existeProducto = productos.some(function (producto) {
+
+            return producto.nombre.toLowerCase() === nombre.toLowerCase();
+
+        });
+
+        if (existeProducto) {
+
+            mensajeProductos.textContent =
+                "Ya existe un producto registrado con ese nombre.";
+
+            nombreProducto.focus();
+            return;
+
+        }
+
+        const nuevoProducto = {
+
+            id: Date.now(),
+            nombre: nombre,
+            tipo: tipo,
+            categoria: categoria,
+            unidad: unidad,
+            precio: precio
+
+        };
+
+        productos.push(nuevoProducto);
+
+        if (!guardarProductos()) {
+
+            productos.pop();
+
+            mensajeProductos.textContent =
+                "No fue posible guardar el producto en el navegador.";
+
+            return;
+
+        }
+
+        actualizarContadores();
+
+        buscarProducto.value = "";
+        filtrarTipo.value = "todos";
+
+        filtrarProductos();
+
+        cerrarFormulario();
+
+        mensajeProductos.textContent =
+            `El producto "${nombre}" fue registrado correctamente.`;
+
+    });
+
+
+    // ==================================================
     // EVENTOS
     // ==================================================
 
@@ -239,12 +403,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
     });
 
-    btnNuevoProducto.addEventListener("click", function () {
+    btnNuevoProducto.addEventListener("click", abrirFormulario);
 
-        mensajeProductos.textContent =
-            "La creación de productos estará disponible en la siguiente etapa del módulo.";
-
-    });
+    btnCancelarProducto.addEventListener("click", cerrarFormulario);
 
 
     // ==================================================

@@ -69,13 +69,103 @@
             <div class="productos-panel-titulo">
                 <div>
                     <h2>Listado de productos</h2>
-                    <p>Consulta y filtra los registros del catálogo.</p>
+                    <p>Consulta y administra los registros del catálogo.</p>
                 </div>
 
                 <button type="button" class="btn-principal" id="btnNuevoProducto">
                     + Nuevo producto
                 </button>
             </div>
+
+            <!-- FORMULARIO DE REGISTRO -->
+
+            <section class="formulario-producto" id="formularioProducto" hidden>
+
+                <div class="formulario-producto-titulo">
+                    <h2>Registrar nuevo producto</h2>
+                    <p>Completa la información del producto que deseas agregar.</p>
+                </div>
+
+                <form id="formNuevoProducto">
+
+                    <div class="formulario-producto-grid">
+
+                        <div class="campo-producto">
+                            <label for="nombreProducto">Nombre del producto</label>
+                            <input
+                                type="text"
+                                id="nombreProducto"
+                                placeholder="Ej. Dedito de queso"
+                                maxlength="100"
+                                required
+                            >
+                        </div>
+
+                        <div class="campo-producto">
+                            <label for="tipoProducto">Tipo de producto</label>
+                            <select id="tipoProducto" required>
+                                <option value="">Selecciona un tipo</option>
+                                <option value="terminado">Producto terminado</option>
+                                <option value="insumo">Materia prima / Insumo</option>
+                            </select>
+                        </div>
+
+                        <div class="campo-producto">
+                            <label for="categoriaProducto">Categoría</label>
+                            <input
+                                type="text"
+                                id="categoriaProducto"
+                                placeholder="Ej. Pasabocas"
+                                maxlength="60"
+                                required
+                            >
+                        </div>
+
+                        <div class="campo-producto">
+                            <label for="unidadProducto">Unidad de medida</label>
+                            <select id="unidadProducto" required>
+                                <option value="">Selecciona una unidad</option>
+                                <option value="Unidad">Unidad</option>
+                                <option value="Kilogramo">Kilogramo</option>
+                                <option value="Gramo">Gramo</option>
+                                <option value="Litro">Litro</option>
+                                <option value="Mililitro">Mililitro</option>
+                                <option value="Libra">Libra</option>
+                                <option value="Paquete">Paquete</option>
+                                <option value="Caja">Caja</option>
+                                <option value="Docena">Docena</option>
+                            </select>
+                        </div>
+
+                        <div class="campo-producto">
+                            <label for="precioProducto">Valor unitario (COP)</label>
+                            <input
+                                type="number"
+                                id="precioProducto"
+                                min="0"
+                                step="1"
+                                placeholder="Ej. 2500"
+                                required
+                            >
+                        </div>
+
+                    </div>
+
+                    <div class="formulario-producto-acciones">
+                        <button type="button" class="btn-secundario" id="btnCancelarProducto">
+                            Cancelar
+                        </button>
+
+                        <button type="submit" class="btn-principal">
+                            Guardar producto
+                        </button>
+                    </div>
+
+                </form>
+
+            </section>
+
+            <!-- BÚSQUEDA Y FILTROS -->
 
             <div class="productos-filtros">
 
@@ -103,6 +193,8 @@
 
             </div>
 
+            <!-- TABLA DE PRODUCTOS -->
+
             <div class="productos-tabla-contenedor">
 
                 <table class="productos-tabla">
@@ -112,7 +204,7 @@
                             <th>Tipo</th>
                             <th>Categoría</th>
                             <th>Unidad</th>
-                            <th>Precio</th>
+                            <th>Valor unitario</th>
                         </tr>
                     </thead>
 
