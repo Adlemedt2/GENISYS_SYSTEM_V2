@@ -542,3 +542,266 @@ input {
         width: 100%;
     }
 }
+/* =====================================================
+   14. PANTALLA DE INICIO DE SESIÓN - LOGIN
+   ===================================================== */
+
+.pagina-login {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background: var(--fondo);
+}
+
+.login-contenedor {
+    width: min(1050px, 92%);
+    margin: auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background: var(--blanco);
+    border: 1px solid var(--borde);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: var(--sombra);
+}
+
+/* Panel de presentación */
+
+.login-presentacion {
+    padding: 50px 45px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: var(--azul);
+    color: var(--blanco);
+}
+
+.login-logo {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: fit-content;
+    padding: 14px 22px;
+    margin: 0 auto 40px;
+    background: #FFFFFF;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.12);
+}
+
+.login-logo img {
+    width: 170px;
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+
+.login-presentacion h1 {
+    margin-bottom: 18px;
+    font-size: 32px;
+    line-height: 1.25;
+    text-align: center;
+}
+
+.login-presentacion p {
+    margin-bottom: 30px;
+    color: #DBEAFE;
+    font-size: 15px;
+    text-align: center;
+}
+
+.login-beneficios {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.login-beneficios span {
+    font-size: 14px;
+    color: var(--blanco);
+}
+
+/* Formulario */
+
+.login-formulario {
+    padding: 50px 45px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.login-titulo {
+    margin-bottom: 30px;
+}
+
+.login-titulo h2 {
+    margin-bottom: 8px;
+    color: var(--azul-oscuro);
+    font-size: 29px;
+}
+
+.login-titulo p {
+    color: var(--texto-secundario);
+    font-size: 14px;
+}
+
+.campo-login {
+    margin-bottom: 22px;
+}
+
+.campo-login label {
+    display: block;
+    margin-bottom: 8px;
+    color: var(--texto);
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.campo-login input {
+    width: 100%;
+    padding: 13px 15px;
+    border: 1px solid var(--borde);
+    border-radius: 8px;
+    outline: none;
+    background: var(--blanco);
+    color: var(--texto);
+}
+
+.campo-login input:focus {
+    border-color: var(--azul);
+    box-shadow: 0 0 0 3px rgba(30, 58, 138, 0.10);
+}
+
+.campo-login input::placeholder {
+    color: #94A3B8;
+}
+
+/* Opciones */
+
+.login-opciones {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    margin: 5px 0 25px;
+    font-size: 12px;
+}
+
+.recordarme {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    color: var(--texto-secundario);
+}
+
+.recordarme input {
+    accent-color: var(--azul);
+}
+
+.login-opciones a,
+.login-registro a {
+    color: var(--azul);
+    font-weight: 700;
+}
+
+.login-opciones a:hover,
+.login-registro a:hover {
+    text-decoration: underline;
+}
+
+/* Botón de acceso */
+
+.btn-login {
+    width: 100%;
+    padding: 14px;
+    border: none;
+    border-radius: 8px;
+    background: var(--azul);
+    color: var(--blanco);
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-login:hover {
+    background: var(--azul-oscuro);
+}
+
+/* Enlaces inferiores */
+
+.login-registro {
+    margin-top: 25px;
+    text-align: center;
+    color: var(--texto-secundario);
+    font-size: 13px;
+}
+
+.login-registro a {
+    margin-left: 4px;
+}
+
+.login-volver {
+    display: block;
+    margin-top: 25px;
+    text-align: center;
+    color: var(--texto-secundario);
+    font-size: 13px;
+}
+
+.login-volver:hover {
+    color: var(--azul);
+}
+
+/* Pie de página */
+
+.login-footer {
+    padding: 20px;
+    text-align: center;
+    color: var(--texto-secundario);
+    font-size: 12px;
+}
+
+/* =====================================================
+   15. RESPONSIVE DEL LOGIN
+   ===================================================== */
+
+@media (max-width: 760px) {
+    .login-contenedor {
+        grid-template-columns: 1fr;
+        margin: 25px auto;
+    }
+
+    .login-presentacion {
+        padding: 35px;
+    }
+
+    .login-presentacion h1 {
+        font-size: 27px;
+    }
+
+    .login-logo {
+        margin-bottom: 20px;
+    }
+
+    .login-formulario {
+        padding: 40px 35px;
+    }
+}
+
+@media (max-width: 480px) {
+    .login-contenedor {
+        width: 94%;
+    }
+
+    .login-presentacion {
+        padding: 30px 25px;
+    }
+
+    .login-formulario {
+        padding: 35px 25px;
+    }
+
+    .login-opciones {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+}
