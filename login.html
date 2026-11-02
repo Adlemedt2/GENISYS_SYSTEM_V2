@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Inicia sesión en Genisys System.">
+    <title>Iniciar sesión | Genisys System</title>
+    <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body class="pagina-login">
+
+    <main class="login-contenedor">
+
+        <section class="login-presentacion">
+            <a href="index.html" class="login-logo">
+                <img src="img/LOGO_GENISYS.png" alt="Genisys System">
+            </a>
+
+            <h1>Bienvenido a Genisys System</h1>
+
+            <p>
+                Gestiona tu negocio de manera sencilla,
+                organizada y eficiente desde un solo lugar.
+            </p>
+
+            <div class="login-beneficios">
+                <span>✓ Control de ventas e inventario</span>
+                <span>✓ Gestión de compras y producción</span>
+                <span>✓ Información organizada de tu negocio</span>
+            </div>
+        </section>
+
+        <section class="login-formulario">
+
+            <div class="login-titulo">
+                <h2>Iniciar sesión</h2>
+                <p>Ingresa tus datos para acceder al sistema.</p>
+            </div>
+
+            <form action="#" method="post">
+
+                <div class="campo-login">
+                    <label for="correo">Correo electrónico</label>
+                    <input
+                        type="email"
+                        id="correo"
+                        name="correo"
+                        placeholder="ejemplo@correo.com"
+                        required
+                    >
+                </div>
+
+                <div class="campo-login">
+                    <label for="contrasena">Contraseña</label>
+                    <input
+                        type="password"
+                        id="contrasena"
+                        name="contrasena"
+                        placeholder="Ingresa tu contraseña"
+                        required
+                    >
+                </div>
+
+                <div class="login-opciones">
+                    <label class="recordarme">
+                        <input type="checkbox" name="recordarme">
+                        Recordarme
+                    </label>
+
+                    <a href="recuperar.html">¿Olvidaste tu contraseña?</a>
+                </div>
+
+                <button type="submit" class="btn-login">
+                    Iniciar sesión
+                </button>
+
+            </form>
+
+            <div class="login-registro">
+                ¿No tienes una cuenta?
+                <a href="registro.html">Crear cuenta</a>
+            </div>
+
+            <a href="index.html" class="login-volver">
+                ← Volver al inicio
+            </a>
+
+        </section>
+
+    </main>
+
+    <footer class="login-footer">
+        © 2026 Genisys System. Todos los derechos reservados.
+    </footer>
+
+</body>
+</html>
