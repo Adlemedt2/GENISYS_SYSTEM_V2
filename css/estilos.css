@@ -1532,3 +1532,30 @@ input {
         justify-content: center;
     }
 }
+
+/* ==================================================
+   MENSAJES DEL FORMULARIO LOGIN
+================================================== */
+
+.mensaje-login {
+    margin-top: 15px;
+    padding: 0;
+    font-size: 14px;
+    border-radius: 8px;
+}
+
+.mensaje-login:empty {
+    display: none;
+}
+
+.mensaje-login.error {
+    padding: 12px;
+    color: #B91C1C;
+    background: #FEE2E2;
+}
+
+.mensaje-login.exito {
+    padding: 12px;
+    color: #166534;
+    background: #DCFCE7;
+}
