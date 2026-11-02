@@ -1,0 +1,133 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro | Genisys System</title>
+    <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body class="pagina-registro">
+
+    <main class="registro-contenedor">
+
+        <!-- Panel de presentación -->
+        <section class="registro-presentacion">
+
+            <a href="index.html" class="registro-logo">
+                <img src="img/LOGO_GENISYS.png" alt="Logo Genisys System">
+            </a>
+
+            <h1>Únete a Genisys System</h1>
+
+            <p>
+                Comienza a gestionar tu negocio de manera sencilla,
+                organizada y eficiente desde un solo lugar.
+            </p>
+
+            <div class="registro-beneficios">
+                <span>✓ Organiza la información de tu negocio</span>
+                <span>✓ Controla tus ventas e inventarios</span>
+                <span>✓ Administra compras y producción</span>
+                <span>✓ Consulta tus resultados fácilmente</span>
+            </div>
+
+        </section>
+
+        <!-- Formulario de registro -->
+        <section class="registro-formulario">
+
+            <div class="registro-titulo">
+                <h2>Crear una cuenta</h2>
+                <p>Completa los siguientes datos para registrarte.</p>
+            </div>
+
+            <form id="formRegistro">
+
+                <div class="campo-registro">
+                    <label for="nombre">Nombre completo</label>
+                    <input
+                        type="text"
+                        id="nombre"
+                        name="nombre"
+                        placeholder="Ingresa tu nombre completo"
+                        required
+                    >
+                </div>
+
+                <div class="campo-registro">
+                    <label for="correo">Correo electrónico</label>
+                    <input
+                        type="email"
+                        id="correo"
+                        name="correo"
+                        placeholder="ejemplo@correo.com"
+                        required
+                    >
+                </div>
+
+                <div class="campo-registro">
+                    <label for="usuario">Nombre de usuario</label>
+                    <input
+                        type="text"
+                        id="usuario"
+                        name="usuario"
+                        placeholder="Crea un nombre de usuario"
+                        required
+                    >
+                </div>
+
+                <div class="campo-registro">
+                    <label for="contrasena">Contraseña</label>
+                    <input
+                        type="password"
+                        id="contrasena"
+                        name="contrasena"
+                        placeholder="Crea una contraseña"
+                        required
+                    >
+                </div>
+
+                <div class="campo-registro">
+                    <label for="confirmar">Confirmar contraseña</label>
+                    <input
+                        type="password"
+                        id="confirmar"
+                        name="confirmar"
+                        placeholder="Repite tu contraseña"
+                        required
+                    >
+                </div>
+
+                <div class="registro-terminos">
+                    <label>
+                        <input type="checkbox" name="terminos" required>
+                        Acepto los términos y condiciones.
+                    </label>
+                </div>
+
+                <button type="submit" class="btn-registro">
+                    Crear cuenta
+                </button>
+                <div id="mensajeRegistro" class="mensaje-registro" role="alert"></div>
+            </form>
+
+            <div class="registro-login">
+                ¿Ya tienes una cuenta?
+                <a href="login.html">Inicia sesión</a>
+            </div>
+
+            <a href="index.html" class="registro-volver">
+                Volver al inicio
+            </a>
+
+        </section>
+
+    </main>
+
+    <footer class="registro-footer">
+        <p>© 2026 Genisys System. Todos los derechos reservados.</p>
+    </footer>
+    <script src="js/registro.js"></script>
+</body>
+</html>

@@ -1559,3 +1559,29 @@ input {
     color: #166534;
     background: #DCFCE7;
 }
+/* ==================================================
+   MENSAJES DEL FORMULARIO DE REGISTRO
+================================================== */
+
+.mensaje-registro {
+    margin-top: 15px;
+    padding: 0;
+    font-size: 14px;
+    border-radius: 8px;
+}
+
+.mensaje-registro:empty {
+    display: none;
+}
+
+.mensaje-registro.error {
+    padding: 12px;
+    color: #B91C1C;
+    background: #FEE2E2;
+}
+
+.mensaje-registro.exito {
+    padding: 12px;
+    color: #166534;
+    background: #DCFCE7;
+}
