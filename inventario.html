@@ -1,0 +1,194 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventario | Genisys System</title>
+    <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+
+    <header class="encabezado">
+        <div class="logo">
+            <img src="img/LOGO_GENISYS.png" alt="Genisys System" class="logo-icono">
+            <span>Genisys System</span>
+        </div>
+
+        <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú" aria-expanded="false">
+            ☰
+        </button>
+
+        <nav class="navegacion" id="menuNavegacion">
+            <a href="index.html">Inicio</a>
+            <a href="productos.html">Productos</a>
+            <a href="inventario.html" class="activo">Inventario</a>
+            <a href="login.html">Cerrar sesión</a>
+        </nav>
+    </header>
+
+    <main class="contenedor-inventario">
+
+        <section class="encabezado-pagina">
+            <div>
+                <h1>Control de inventario</h1>
+                <p>Consulta y administra las existencias de productos e insumos del negocio.</p>
+            </div>
+        </section>
+
+        <!-- Resumen del inventario -->
+        <section class="resumen-inventario">
+
+            <article class="tarjeta-inventario">
+                <span class="titulo-tarjeta">Total de productos</span>
+                <strong id="totalInventario">0</strong>
+                <span>Referencias registradas</span>
+            </article>
+
+            <article class="tarjeta-inventario">
+                <span class="titulo-tarjeta">Productos terminados</span>
+                <strong id="totalTerminadosInventario">0</strong>
+                <span>Productos disponibles</span>
+            </article>
+
+            <article class="tarjeta-inventario">
+                <span class="titulo-tarjeta">Materias primas e insumos</span>
+                <strong id="totalInsumosInventario">0</strong>
+                <span>Elementos registrados</span>
+            </article>
+
+            <article class="tarjeta-inventario alerta">
+                <span class="titulo-tarjeta">Stock bajo</span>
+                <strong id="totalStockBajo">0</strong>
+                <span>Requieren atención</span>
+            </article>
+
+        </section>
+
+        <!-- Acciones -->
+        <section class="acciones-inventario">
+            <div>
+                <h2>Existencias</h2>
+                <p>Consulta los productos y sus cantidades actuales.</p>
+            </div>
+
+            <div class="botones-inventario">
+                <button type="button" class="btn-secundario" id="btnEntrada">
+                    Registrar entrada
+                </button>
+
+                <button type="button" class="btn-secundario" id="btnSalida">
+                    Registrar salida
+                </button>
+
+                <button type="button" class="btn-principal" id="btnAjuste">
+                    Ajustar inventario
+                </button>
+            </div>
+        </section>
+
+        <!-- Filtros -->
+        <section class="panel-inventario">
+
+            <div class="filtros-inventario">
+                <div class="campo-busqueda">
+                    <label for="buscarInventario">Buscar producto</label>
+                    <input
+                        type="search"
+                        id="buscarInventario"
+                        placeholder="Nombre o categoría..."
+                    >
+                </div>
+
+                <div class="campo-filtro">
+                    <label for="filtrarTipoInventario">Tipo de producto</label>
+                    <select id="filtrarTipoInventario">
+                        <option value="todos">Todos</option>
+                        <option value="terminado">Producto terminado</option>
+                        <option value="insumo">Materia prima / Insumo</option>
+                    </select>
+                </div>
+
+                <div class="campo-filtro">
+                    <label for="filtrarEstadoInventario">Estado del stock</label>
+                    <select id="filtrarEstadoInventario">
+                        <option value="todos">Todos</option>
+                        <option value="disponible">Disponible</option>
+                        <option value="bajo">Stock bajo</option>
+                        <option value="agotado">Agotado</option>
+                    </select>
+                </div>
+
+                <button type="button" class="btn-limpiar" id="btnLimpiarInventario">
+                    Limpiar filtros
+                </button>
+            </div>
+
+            <!-- Tabla de existencias -->
+            <div class="tabla-contenedor">
+                <table class="tabla-inventario">
+                    <thead>
+                        <tr>
+                            <th>Producto</th>
+                            <th>Tipo</th>
+                            <th>Categoría</th>
+                            <th>Existencia</th>
+                            <th>Unidad</th>
+                            <th>Stock mínimo</th>
+                            <th>Estado</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="listaInventario">
+                        <tr>
+                            <td colspan="7">Cargando inventario...</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <p id="mensajeInventario" class="mensaje-inventario" aria-live="polite"></p>
+
+        </section>
+
+        <!-- Historial de movimientos -->
+        <section class="panel-inventario historial-inventario">
+            <div class="titulo-seccion-inventario">
+                <div>
+                    <h2>Movimientos recientes</h2>
+                    <p>Registro de entradas, salidas y ajustes de inventario.</p>
+                </div>
+            </div>
+
+            <div class="tabla-contenedor">
+                <table class="tabla-inventario">
+                    <thead>
+                        <tr>
+                            <th>Fecha</th>
+                            <th>Producto</th>
+                            <th>Movimiento</th>
+                            <th>Cantidad</th>
+                            <th>Observación</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="listaMovimientos">
+                        <tr>
+                            <td colspan="5">No hay movimientos registrados.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="pie-pagina">
+        <p>&copy; 2026 Genisys System. Todos los derechos reservados.</p>
+    </footer>
+
+    <script src="js/principal.js"></script>
+    <script src="js/inventario.js"></script>
+
+</body>
+</html>
