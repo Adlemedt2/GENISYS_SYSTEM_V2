@@ -2171,5 +2171,44 @@ input {
     .formulario-producto-acciones button {
         width: 100%;
     }
+}
 
+
+/* ==================================================
+   ACCIONES DE LA TABLA DE PRODUCTOS
+================================================== */
+
+.productos-tabla td:last-child {
+    white-space: nowrap;
+}
+
+.btn-accion {
+    border: none;
+    padding: 7px 11px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-right: 6px;
+    transition: 0.2s ease;
+}
+
+.btn-editar {
+    background: var(--azul-claro);
+    color: var(--azul);
+}
+
+.btn-editar:hover {
+    background: var(--azul);
+    color: var(--blanco);
+}
+
+.btn-eliminar {
+    background: #FEE2E2;
+    color: #B91C1C;
+}
+
+.btn-eliminar:hover {
+    background: #B91C1C;
+    color: var(--blanco);
 }
