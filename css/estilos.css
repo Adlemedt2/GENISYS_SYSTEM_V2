@@ -1,0 +1,544 @@
+
+/* =====================================================
+   GENISYS SYSTEM
+   Hoja de estilos principal
+
+===================================================== */
+
+/* 1. VARIABLES GENERALES */
+
+:root {
+    --azul: #1E3A8A;
+    --azul-oscuro: #172554;
+    --azul-claro: #EFF6FF;
+    --verde: #16A34A;
+    --verde-claro: #DCFCE7;
+    --blanco: #FFFFFF;
+    --fondo: #F8FAFC;
+    --texto: #1E293B;
+    --texto-secundario: #64748B;
+    --borde: #E2E8F0;
+    --sombra: 0 10px 30px rgba(15, 23, 42, 0.07);
+}
+
+/* 2. CONFIGURACIÓN GENERAL */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: var(--blanco);
+    color: var(--texto);
+    line-height: 1.6;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+button,
+input {
+    font: inherit;
+}
+
+/* 3. ENCABEZADO */
+
+.encabezado {
+    width: 100%;
+    min-height: 82px;
+    padding: 15px 7%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 25px;
+    background: var(--blanco);
+    border-bottom: 1px solid var(--borde);
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--azul);
+    font-size: 19px;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+}
+
+.logo strong {
+    color: var(--verde);
+}
+
+.logo-icono {
+    width: 42px;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.logo-icono img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+}
+
+.logo-fondo {
+    position: absolute;
+    left: 50%;
+    top: 35%;
+    transform: translate(-50%, -50%);
+    z-index: 0;
+    opacity: 0.12;
+    pointer-events: none;
+}
+
+.logo-fondo img {
+    width: 280px;
+    height: auto;
+    object-fit: contain;
+}
+
+.navegacion {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+}
+
+.navegacion a {
+    color: var(--texto-secundario);
+    font-size: 14px;
+    font-weight: 600;
+    transition: color 0.3s;
+}
+
+.navegacion a:hover {
+    color: var(--azul);
+}
+
+.acciones {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+/* 4. BOTONES */
+
+.btn-principal,
+.btn-secundario {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 11px 20px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 700;
+    transition: 0.3s;
+}
+
+.btn-principal {
+    background: var(--azul);
+    color: var(--blanco);
+}
+
+.btn-principal:hover {
+    background: var(--azul-oscuro);
+    transform: translateY(-2px);
+}
+
+.btn-secundario {
+    background: var(--azul-claro);
+    color: var(--azul);
+}
+
+.btn-secundario:hover {
+    background: #DBEAFE;
+}
+
+/* 5. SECCIÓN PRINCIPAL */
+
+.hero {
+    min-height: 540px;
+    padding: 75px 8%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 60px;
+    background: linear-gradient(120deg, #F8FAFC, #EFF6FF);
+}
+
+.hero-contenido {
+    max-width: 590px;
+}
+
+.etiqueta {
+    display: inline-block;
+    margin-bottom: 17px;
+    color: var(--verde);
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+}
+
+.hero h1 {
+    margin-bottom: 22px;
+    color: var(--azul-oscuro);
+    font-size: clamp(36px, 4vw, 53px);
+    line-height: 1.15;
+}
+
+.hero-contenido p {
+    margin-bottom: 30px;
+    color: var(--texto-secundario);
+    font-size: 16px;
+    max-width: 520px;
+}
+
+.hero-botones {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+/* 6. PANEL ILUSTRATIVO */
+
+.hero-visual {
+    display: flex;
+    justify-content: center;
+}
+
+.panel-resumen {
+    width: 100%;
+    max-width: 480px;
+    padding: 25px;
+    background: var(--blanco);
+    border: 1px solid var(--borde);
+    border-radius: 16px;
+    box-shadow: var(--sombra);
+}
+
+.panel-cabecera {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 25px;
+    color: var(--azul-oscuro);
+    font-size: 15px;
+    font-weight: 700;
+}
+
+.indicador {
+    color: var(--verde);
+    font-size: 11px;
+}
+
+.resumen-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+}
+
+.resumen-card {
+    min-height: 125px;
+    padding: 17px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    background: var(--fondo);
+    border: 1px solid var(--borde);
+    border-radius: 10px;
+}
+
+.resumen-card span {
+    color: var(--texto-secundario);
+    font-size: 13px;
+}
+
+.resumen-card strong {
+    color: var(--azul);
+    font-size: 19px;
+}
+
+.resumen-card small {
+    color: var(--texto-secundario);
+    font-size: 11px;
+}
+
+/* 7. MÓDULOS */
+
+.seccion-modulos {
+    padding: 85px 8%;
+    background: var(--blanco);
+}
+
+.seccion-titulo {
+    max-width: 650px;
+    margin: 0 auto 45px;
+    text-align: center;
+}
+
+.seccion-titulo h2,
+.seccion-nosotros h2 {
+    margin-bottom: 15px;
+    color: var(--azul-oscuro);
+    font-size: 32px;
+    line-height: 1.25;
+}
+
+.seccion-titulo p {
+    color: var(--texto-secundario);
+}
+
+.modulos-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+}
+
+.modulo {
+    padding: 27px;
+    background: var(--blanco);
+    border: 1px solid var(--borde);
+    border-radius: 12px;
+    transition: 0.3s;
+}
+
+.modulo:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--sombra);
+    border-color: #BFDBFE;
+}
+
+.modulo-icono {
+    width: 48px;
+    height: 48px;
+    margin-bottom: 18px;
+    display: grid;
+    place-items: center;
+    background: var(--azul-claro);
+    color: var(--azul);
+    border-radius: 10px;
+    font-size: 23px;
+}
+
+.modulo h3 {
+    margin-bottom: 8px;
+    color: var(--azul-oscuro);
+    font-size: 18px;
+}
+
+.modulo p {
+    color: var(--texto-secundario);
+    font-size: 14px;
+}
+
+/* 8. NOSOTROS */
+
+.seccion-nosotros {
+    padding: 75px 8%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 60px;
+    background: var(--fondo);
+}
+
+.seccion-nosotros p {
+    color: var(--texto-secundario);
+    font-size: 16px;
+}
+
+/* 9. CONTACTO */
+
+.contacto {
+    padding: 75px 20px;
+    text-align: center;
+    background: var(--azul);
+    color: var(--blanco);
+}
+
+.contacto h2 {
+    margin-bottom: 12px;
+    font-size: 30px;
+}
+
+.contacto p {
+    margin-bottom: 25px;
+    color: #DBEAFE;
+}
+
+.contacto .btn-principal {
+    background: var(--verde);
+}
+
+.contacto .btn-principal:hover {
+    background: #15803D;
+}
+
+/* 10. PIE DE PÁGINA */
+
+.pie-pagina {
+    padding: 35px 8%;
+    text-align: center;
+    background: var(--azul-oscuro);
+    color: var(--blanco);
+}
+
+.logo-footer {
+    justify-content: center;
+    margin-bottom: 12px;
+    color: var(--blanco);
+}
+
+.pie-pagina > p {
+    color: #CBD5E1;
+    font-size: 13px;
+}
+
+.pie-pagina .copyright {
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px solid #334155;
+    font-size: 12px;
+}
+
+/* 11. DISEÑO RESPONSIVE: TABLET */
+
+@media (max-width: 1024px) {
+    .encabezado {
+        padding: 15px 4%;
+    }
+
+    .navegacion {
+        gap: 15px;
+    }
+
+    .hero,
+    .seccion-nosotros {
+        padding-left: 5%;
+        padding-right: 5%;
+        gap: 30px;
+    }
+
+    .modulos-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* 12. DISEÑO RESPONSIVE: MÓVIL */
+
+@media (max-width: 760px) {
+    .encabezado {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .navegacion {
+        order: 3;
+        width: 100%;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 18px;
+    }
+
+    .acciones {
+        justify-content: center;
+    }
+
+    .hero {
+        grid-template-columns: 1fr;
+        padding: 55px 6%;
+        text-align: center;
+    }
+
+    .hero-contenido {
+        margin: auto;
+    }
+
+    .hero-contenido p {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .hero-botones {
+        justify-content: center;
+    }
+
+    .hero-visual {
+        width: 100%;
+    }
+
+    .seccion-modulos {
+        padding: 60px 6%;
+    }
+
+    .seccion-nosotros {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        padding: 55px 6%;
+    }
+
+    .seccion-titulo h2,
+    .seccion-nosotros h2 {
+        font-size: 27px;
+    }
+
+    .contacto h2 {
+        font-size: 25px;
+    }
+}
+
+/* 13. MÓVILES PEQUEÑOS */
+
+@media (max-width: 480px) {
+    .logo {
+        font-size: 16px;
+    }
+
+    .acciones {
+        width: 100%;
+    }
+
+    .acciones a {
+        flex: 1;
+    }
+
+    .navegacion {
+        gap: 12px;
+    }
+
+    .navegacion a {
+        font-size: 12px;
+    }
+
+    .hero h1 {
+        font-size: 34px;
+    }
+
+    .resumen-grid,
+    .modulos-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .panel-resumen {
+        padding: 17px;
+    }
+
+    .hero-botones a {
+        width: 100%;
+    }
+}
