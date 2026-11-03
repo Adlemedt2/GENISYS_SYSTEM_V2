@@ -1,5 +1,7 @@
+
 // ==================================================
 // FORMULARIO DE INICIO DE SESIÓN
+// GENISYS SYSTEM
 // ==================================================
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -20,43 +22,37 @@ document.addEventListener("DOMContentLoaded", function () {
         const contrasenaIngresada = contrasena.value.trim();
 
         if (correoIngresado === "" || contrasenaIngresada === "") {
-
             mostrarMensaje("Todos los campos son obligatorios.", "error");
             return;
-
         }
 
         if (!correo.checkValidity()) {
-
             mostrarMensaje("Ingresa un correo electrónico válido.", "error");
             correo.focus();
             return;
-
         }
 
-        mostrarMensaje(
-            "Formulario validado correctamente. La autenticación estará disponible al conectar el sistema con el servidor.",
-            "exito"
-        );
+        mostrarMensaje("Datos validados. Ingresando al sistema...", "exito");
+
+        // Redirigir al Dashboard
+        setTimeout(function () {
+            window.location.href = "dashboard.html";
+        }, 700);
 
     });
 
     function mostrarMensaje(texto, tipo) {
-
         mensaje.textContent = texto;
         mensaje.classList.add(tipo);
-
     }
 
-    // Limpiar mensaje cuando el usuario modifica los campos
+    // Limpiar mensajes al modificar los campos
     correo.addEventListener("input", limpiarMensaje);
     contrasena.addEventListener("input", limpiarMensaje);
 
     function limpiarMensaje() {
-
         mensaje.textContent = "";
         mensaje.className = "mensaje-login";
-
     }
 
 });
