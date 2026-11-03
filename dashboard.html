@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Panel principal de Genisys System.">
+    <title>Dashboard | Genisys System</title>
+    <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body class="pagina-dashboard">
+
+    <header class="dashboard-header">
+        <a href="dashboard.html" class="dashboard-logo">
+            <img src="img/LOGO_GENISYS.png" alt="Genisys System">
+            <span>GENISYS <strong>SYSTEM</strong></span>
+        </a>
+
+        <nav class="dashboard-nav">
+            <a href="dashboard.html" class="activo">⌂ Inicio</a>
+            <a href="productos.html">▦ Productos</a>
+            <a href="compras.html">🛒 Compras</a>
+            <a href="ventas.html">↗ Ventas</a>
+            <a href="inventario.html">▣ Inventario</a>
+        </nav>
+
+        <div class="dashboard-usuario">
+            <div class="dashboard-avatar">AD</div>
+            <div>
+                <strong>Administrador</strong>
+                <small>Usuario del sistema</small>
+            </div>
+            <a href="login.html" class="dashboard-salir" title="Cerrar sesión">↪</a>
+        </div>
+    </header>
+
+    <main class="dashboard-contenedor">
+
+        <section class="dashboard-bienvenida">
+            <div>
+                <span class="dashboard-etiqueta">PANEL DE CONTROL</span>
+                <h1>Bienvenido a Genisys System</h1>
+                <p>Todo lo que sucede en tu negocio, en un solo lugar.</p>
+                <span id="fechaActual" class="dashboard-fecha"></span>
+            </div>
+
+            <div class="bienvenida-decoracion">
+                <img src="img/LOGO_GENISYS_trans.png" alt="">
+            </div>
+        </section>
+
+        <section class="dashboard-titulo-seccion">
+            <div>
+                <h2>Resumen de tu negocio</h2>
+                <p>Indicadores generales de las operaciones.</p>
+            </div>
+        </section>
+
+        <section class="dashboard-indicadores">
+
+            <article class="dashboard-indicador indicador-ventas">
+                <div class="indicador-superior">
+                    <span>Ventas de hoy</span>
+                    <span class="indicador-icono">↗</span>
+                </div>
+                <strong id="dashboardVentas">$0</strong>
+                <small>Valor total vendido hoy</small>
+            </article>
+
+            <article class="dashboard-indicador indicador-compras">
+                <div class="indicador-superior">
+                    <span>Compras de hoy</span>
+                    <span class="indicador-icono">🛒</span>
+                </div>
+                <strong id="dashboardCompras">$0</strong>
+                <small>Valor total comprado hoy</small>
+            </article>
+
+            <article class="dashboard-indicador indicador-productos">
+                <div class="indicador-superior">
+                    <span>Productos registrados</span>
+                    <span class="indicador-icono">▦</span>
+                </div>
+                <strong id="dashboardProductos">0</strong>
+                <small>Productos e insumos</small>
+            </article>
+
+            <article class="dashboard-indicador indicador-alertas">
+                <div class="indicador-superior">
+                    <span>Stock bajo o agotado</span>
+                    <span class="indicador-icono">!</span>
+                </div>
+                <strong id="dashboardStockBajo">0</strong>
+                <small>Productos que requieren atención</small>
+            </article>
+
+        </section>
+
+        <section class="dashboard-contenido-grid">
+
+            <div class="dashboard-panel dashboard-accesos">
+                <div class="dashboard-panel-titulo">
+                    <div>
+                        <h2>Accesos rápidos</h2>
+                        <p>Ingresa directamente a tus módulos.</p>
+                    </div>
+                </div>
+
+                <div class="dashboard-accesos-grid">
+
+                    <a href="productos.html" class="dashboard-acceso">
+                        <span class="acceso-icono acceso-azul">▦</span>
+                        <strong>Productos</strong>
+                        <small>Administrar catálogo</small>
+                        <span class="acceso-flecha">→</span>
+                    </a>
+
+                    <a href="compras.html" class="dashboard-acceso">
+                        <span class="acceso-icono acceso-verde">🛒</span>
+                        <strong>Compras</strong>
+                        <small>Registrar adquisiciones</small>
+                        <span class="acceso-flecha">→</span>
+                    </a>
+
+                    <a href="ventas.html" class="dashboard-acceso">
+                        <span class="acceso-icono acceso-morado">↗</span>
+                        <strong>Ventas</strong>
+                        <small>Registrar operaciones</small>
+                        <span class="acceso-flecha">→</span>
+                    </a>
+
+                    <a href="inventario.html" class="dashboard-acceso">
+                        <span class="acceso-icono acceso-naranja">▣</span>
+                        <strong>Inventario</strong>
+                        <small>Controlar existencias</small>
+                        <span class="acceso-flecha">→</span>
+                    </a>
+
+                </div>
+            </div>
+
+            <div class="dashboard-panel dashboard-alertas">
+                <div class="dashboard-panel-titulo">
+                    <div>
+                        <h2>Atención al inventario</h2>
+                        <p>Productos que necesitan revisión.</p>
+                    </div>
+                    <a href="inventario.html">Ver inventario →</a>
+                </div>
+
+                <div id="dashboardListaAlertas" class="dashboard-lista-alertas">
+                    <p class="dashboard-vacio">Consultando existencias...</p>
+                </div>
+            </div>
+
+        </section>
+
+        <section class="dashboard-panel dashboard-actividad">
+            <div class="dashboard-panel-titulo">
+                <div>
+                    <h2>Actividad reciente</h2>
+                    <p>Últimas operaciones registradas.</p>
+                </div>
+                <span class="actividad-etiqueta">MOVIMIENTOS</span>
+            </div>
+
+            <div class="dashboard-tabla-contenedor">
+                <table class="dashboard-tabla">
+                    <thead>
+                        <tr>
+                            <th>Operación</th>
+                            <th>Referencia</th>
+                            <th>Fecha</th>
+                            <th>Valor</th>
+                        </tr>
+                    </thead>
+                    <tbody id="dashboardActividad">
+                        <tr>
+                            <td colspan="4">Consultando actividad...</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <footer class="dashboard-footer">
+            <span>GENISYS SYSTEM</span>
+            <span>Gestión empresarial para pequeños negocios · 2026</span>
+        </footer>
+
+    </main>
+
+    <script src="js/dashboard.js"></script>
+</body>
+</html>
