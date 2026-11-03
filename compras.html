@@ -1,0 +1,285 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Módulo de compras de Genisys System.">
+    <title>Compras | Genisys System</title>
+    <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body class="pagina-compras">
+
+    <header class="encabezado">
+        <a href="index.html" class="logo">
+            <span class="logo-icono">
+                <img src="img/LOGO_GENISYS.png" alt="Logo Genisys System">
+            </span>
+            <span>GENISYS <strong>SYSTEM</strong></span>
+        </a>
+
+        <button class="menu-toggle" id="menuToggle"
+                aria-label="Abrir menú" aria-expanded="false">
+            ☰
+        </button>
+
+        <nav class="navegacion" id="menuNavegacion">
+            <a href="index.html">Inicio</a>
+            <a href="productos.html">Productos</a>
+            <a href="compras.html" class="activo">Compras</a>
+            <a href="ventas.html">Ventas</a>
+            <a href="inventario.html">Inventario</a>
+            <a href="index.html#modulos">Módulos</a>
+        </nav>
+
+        <div class="acciones">
+            <a href="login.html" class="btn-secundario">Cerrar sesión</a>
+        </div>
+    </header>
+
+    <main class="compras-contenedor">
+
+        <section class="compras-encabezado">
+            <span class="etiqueta">GESTIÓN DE ABASTECIMIENTO</span>
+            <h1>Registro de compras</h1>
+            <p>
+                Registra las adquisiciones realizadas a proveedores
+                y actualiza automáticamente las existencias del inventario.
+            </p>
+        </section>
+
+        <!-- RESUMEN -->
+
+        <section class="compras-resumen">
+
+            <article class="compra-resumen-card">
+                <span>Compras registradas</span>
+                <strong id="totalCompras">0</strong>
+            </article>
+
+            <article class="compra-resumen-card">
+                <span>Compras del día</span>
+                <strong id="comprasDelDia">0</strong>
+            </article>
+
+            <article class="compra-resumen-card">
+                <span>Total comprado hoy</span>
+                <strong id="totalCompradoHoy">$0</strong>
+            </article>
+
+        </section>
+
+        <!-- FORMULARIO DE COMPRA -->
+
+        <section class="compras-panel">
+
+            <div class="compras-panel-titulo">
+                <div>
+                    <h2>Nueva compra</h2>
+                    <p>Registra los datos del proveedor y los productos adquiridos.</p>
+                </div>
+            </div>
+
+            <!-- DATOS GENERALES -->
+
+            <div class="compra-datos">
+
+                <div class="campo-compra">
+                    <label for="proveedorCompra">Proveedor</label>
+                    <input
+                        type="text"
+                        id="proveedorCompra"
+                        placeholder="Nombre del proveedor"
+                        maxlength="120"
+                        required
+                    >
+                </div>
+
+                <div class="campo-compra">
+                    <label for="fechaCompra">Fecha de compra</label>
+                    <input type="date" id="fechaCompra" required>
+                </div>
+
+            </div>
+
+            <!-- SELECCIÓN DE PRODUCTOS -->
+
+            <section class="compra-seleccion">
+
+                <h3>Agregar productos</h3>
+
+                <div class="compra-productos-controles">
+
+                    <div class="campo-compra">
+                        <label for="buscarProductoCompra">Buscar producto</label>
+                        <input
+                            type="search"
+                            id="buscarProductoCompra"
+                            placeholder="Escribe el nombre..."
+                        >
+                    </div>
+
+                    <div class="campo-compra">
+                        <label for="productoCompra">Producto</label>
+                        <select id="productoCompra">
+                            <option value="">Selecciona un producto</option>
+                        </select>
+                    </div>
+
+                    <div class="campo-compra">
+                        <label for="cantidadCompra">Cantidad</label>
+                        <input
+                            type="number"
+                            id="cantidadCompra"
+                            min="0.01"
+                            step="0.01"
+                            value="1"
+                        >
+                    </div>
+
+                    <div class="campo-compra">
+                        <label for="precioCompra">Costo unitario (COP)</label>
+                        <input
+                            type="number"
+                            id="precioCompra"
+                            min="0"
+                            step="1"
+                            placeholder="Ej. 2500"
+                        >
+                    </div>
+
+                    <div class="campo-compra campo-compra-boton">
+                        <button type="button" class="btn-principal"
+                                id="btnAgregarCompra">
+                            + Agregar
+                        </button>
+                    </div>
+
+                </div>
+
+                <p id="mensajeCompra" class="mensaje-compra" role="status"></p>
+
+            </section>
+
+            <!-- CARRITO DE COMPRA -->
+
+            <section class="compra-carrito">
+
+                <div class="compra-carrito-titulo">
+                    <div>
+                        <h3>Detalle de la compra</h3>
+                        <p>Productos e insumos adquiridos.</p>
+                    </div>
+
+                    <span id="cantidadProductosCompra">0 productos</span>
+                </div>
+
+                <div class="compra-tabla-contenedor">
+
+                    <table class="compra-tabla">
+                        <thead>
+                            <tr>
+                                <th>Producto</th>
+                                <th>Costo unitario</th>
+                                <th>Cantidad</th>
+                                <th>Subtotal</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="listaCarritoCompra">
+                            <tr>
+                                <td colspan="5">La compra está vacía.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+
+                <!-- TOTAL -->
+
+                <div class="compra-total">
+
+                    <div>
+                        <span>Subtotal</span>
+                        <strong id="subtotalCompra">$0</strong>
+                    </div>
+
+                    <div>
+                        <span>Total de la compra</span>
+                        <strong id="totalCompra">$0</strong>
+                    </div>
+
+                </div>
+
+                <!-- ACCIONES -->
+
+                <div class="compra-acciones">
+
+                    <button type="button" class="btn-secundario"
+                            id="btnVaciarCompra">
+                        Vaciar compra
+                    </button>
+
+                    <button type="button" class="btn-principal"
+                            id="btnConfirmarCompra">
+                        Confirmar compra
+                    </button>
+
+                </div>
+
+            </section>
+
+        </section>
+
+        <!-- HISTORIAL -->
+
+        <section class="compras-panel compras-historial">
+
+            <div class="compras-panel-titulo">
+                <div>
+                    <h2>Historial de compras</h2>
+                    <p>Consulta las adquisiciones registradas.</p>
+                </div>
+            </div>
+
+            <div class="compra-tabla-contenedor">
+
+                <table class="compra-tabla">
+                    <thead>
+                        <tr>
+                            <th>N.º de compra</th>
+                            <th>Fecha</th>
+                            <th>Proveedor</th>
+                            <th>Productos</th>
+                            <th>Total</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="listaCompras">
+                        <tr>
+                            <td colspan="5">No hay compras registradas.</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <footer class="pie-pagina">
+        <a href="index.html" class="logo logo-footer">
+            <span class="logo-icono">G</span>
+            <span>GENISYS <strong>SYSTEM</strong></span>
+        </a>
+        <p>Gestión empresarial para pequeños negocios.</p>
+        <p class="copyright">© 2026 Genisys System. Proyecto formativo SENA.</p>
+    </footer>
+
+    <script src="js/principal.js"></script>
+    <script src="js/compras.js"></script>
+
+</body>
+</html>
