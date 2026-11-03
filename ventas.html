@@ -1,0 +1,277 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Módulo de ventas de Genisys System.">
+    <title>Ventas | Genisys System</title>
+    <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body class="pagina-ventas">
+
+    <header class="encabezado">
+        <a href="index.html" class="logo">
+            <span class="logo-icono">
+                <img src="img/LOGO_GENISYS.png" alt="Logo Genisys System">
+            </span>
+            <span>GENISYS <strong>SYSTEM</strong></span>
+        </a>
+
+        <button class="menu-toggle" id="menuToggle"
+                aria-label="Abrir menú" aria-expanded="false">
+            ☰
+        </button>
+
+        <nav class="navegacion" id="menuNavegacion">
+            <a href="index.html">Inicio</a>
+            <a href="productos.html">Productos</a>
+            <a href="ventas.html" class="activo">Ventas</a>
+            <a href="inventario.html">Inventario</a>
+            <a href="index.html#modulos">Módulos</a>
+        </nav>
+
+        <div class="acciones">
+            <a href="login.html" class="btn-secundario">Cerrar sesión</a>
+        </div>
+    </header>
+
+    <main class="ventas-contenedor">
+
+        <section class="ventas-encabezado">
+            <span class="etiqueta">GESTIÓN COMERCIAL</span>
+            <h1>Registro de ventas</h1>
+            <p>
+                Registra las operaciones comerciales, agrega productos
+                al carrito y consulta el valor total de cada venta.
+            </p>
+        </section>
+
+        <!-- RESUMEN -->
+
+        <section class="ventas-resumen">
+
+            <article class="venta-resumen-card">
+                <span>Ventas registradas</span>
+                <strong id="totalVentas">0</strong>
+            </article>
+
+            <article class="venta-resumen-card">
+                <span>Ventas del día</span>
+                <strong id="ventasDelDia">0</strong>
+            </article>
+
+            <article class="venta-resumen-card">
+                <span>Total vendido hoy</span>
+                <strong id="totalVendidoHoy">$0</strong>
+            </article>
+
+        </section>
+
+        <!-- FORMULARIO DE VENTA -->
+
+        <section class="ventas-panel">
+
+            <div class="ventas-panel-titulo">
+                <div>
+                    <h2>Nueva venta</h2>
+                    <p>Selecciona los productos y las cantidades que deseas vender.</p>
+                </div>
+            </div>
+
+            <!-- DATOS DE LA VENTA -->
+
+            <div class="venta-datos">
+
+                <div class="campo-venta">
+                    <label for="clienteVenta">Nombre del cliente</label>
+                    <input
+                        type="text"
+                        id="clienteVenta"
+                        placeholder="Ej. Cliente general"
+                        maxlength="100"
+                    >
+                </div>
+
+                <div class="campo-venta">
+                    <label for="fechaVenta">Fecha de venta</label>
+                    <input type="date" id="fechaVenta" required>
+                </div>
+
+            </div>
+
+            <!-- SELECCIÓN DE PRODUCTOS -->
+
+            <section class="venta-seleccion">
+
+                <h3>Agregar productos</h3>
+
+                <div class="venta-productos-controles">
+
+                    <div class="campo-venta">
+                        <label for="buscarProductoVenta">Buscar producto</label>
+                        <input
+                            type="search"
+                            id="buscarProductoVenta"
+                            placeholder="Escribe el nombre del producto..."
+                        >
+                    </div>
+
+                    <div class="campo-venta">
+                        <label for="productoVenta">Producto disponible</label>
+                        <select id="productoVenta">
+                            <option value="">Selecciona un producto</option>
+                        </select>
+                    </div>
+
+                    <div class="campo-venta">
+                        <label for="cantidadVenta">Cantidad</label>
+                        <input
+                            type="number"
+                            id="cantidadVenta"
+                            min="1"
+                            step="1"
+                            value="1"
+                            required
+                        >
+                    </div>
+
+                    <div class="campo-venta campo-venta-boton">
+                        <button type="button" class="btn-principal"
+                                id="btnAgregarCarrito">
+                            + Agregar
+                        </button>
+                    </div>
+
+                </div>
+
+                <p id="mensajeVenta" class="mensaje-venta" role="status"></p>
+
+            </section>
+
+            <!-- CARRITO -->
+
+            <section class="venta-carrito">
+
+                <div class="venta-carrito-titulo">
+                    <div>
+                        <h3>Carrito de venta</h3>
+                        <p>Productos seleccionados para esta operación.</p>
+                    </div>
+
+                    <span id="cantidadProductosCarrito">0 productos</span>
+                </div>
+
+                <div class="venta-tabla-contenedor">
+
+                    <table class="venta-tabla">
+                        <thead>
+                            <tr>
+                                <th>Producto</th>
+                                <th>Precio unitario</th>
+                                <th>Cantidad</th>
+                                <th>Subtotal</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="listaCarrito">
+                            <tr>
+                                <td colspan="5">
+                                    El carrito está vacío.
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+
+                <!-- TOTAL -->
+
+                <div class="venta-total">
+
+                    <div>
+                        <span>Subtotal</span>
+                        <strong id="subtotalVenta">$0</strong>
+                    </div>
+
+                    <div>
+                        <span>Total de la venta</span>
+                        <strong id="totalVenta">$0</strong>
+                    </div>
+
+                </div>
+
+                <!-- ACCIONES -->
+
+                <div class="venta-acciones">
+
+                    <button type="button" class="btn-secundario"
+                            id="btnVaciarCarrito">
+                        Vaciar carrito
+                    </button>
+
+                    <button type="button" class="btn-principal"
+                            id="btnConfirmarVenta">
+                        Confirmar venta
+                    </button>
+
+                </div>
+
+            </section>
+
+        </section>
+
+        <!-- HISTORIAL -->
+
+        <section class="ventas-panel ventas-historial">
+
+            <div class="ventas-panel-titulo">
+                <div>
+                    <h2>Historial de ventas</h2>
+                    <p>Consulta las operaciones registradas.</p>
+                </div>
+            </div>
+
+            <div class="venta-tabla-contenedor">
+
+                <table class="venta-tabla">
+                    <thead>
+                        <tr>
+                            <th>N.º de venta</th>
+                            <th>Fecha</th>
+                            <th>Cliente</th>
+                            <th>Productos</th>
+                            <th>Total</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="listaVentas">
+                        <tr>
+                            <td colspan="5">
+                                No hay ventas registradas.
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <footer class="pie-pagina">
+        <a href="index.html" class="logo logo-footer">
+            <span class="logo-icono">G</span>
+            <span>GENISYS <strong>SYSTEM</strong></span>
+        </a>
+        <p>Gestión empresarial para pequeños negocios.</p>
+        <p class="copyright">© 2026 Genisys System. Proyecto formativo SENA.</p>
+    </footer>
+
+    <script src="js/principal.js"></script>
+    <script src="js/ventas.js"></script>
+
+</body>
+</html>
