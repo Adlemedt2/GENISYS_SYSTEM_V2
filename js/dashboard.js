@@ -4,6 +4,40 @@
 
 document.addEventListener("DOMContentLoaded", function () {
 
+
+        // MENÚ HAMBURGUESA DEL DASHBOARD
+
+    const botonMenu = document.getElementById("dashboardMenuToggle");
+    const menuDashboard = document.getElementById("dashboardMenu");
+
+    botonMenu.addEventListener("click", function () {
+
+        const abierto = menuDashboard.classList.toggle("abierto");
+
+        botonMenu.setAttribute("aria-expanded", abierto);
+        botonMenu.setAttribute(
+            "aria-label",
+            abierto ? "Cerrar menú" : "Abrir menú"
+        );
+
+        botonMenu.textContent = abierto ? "✕" : "☰";
+
+    });
+
+    // Cerrar menú al seleccionar una opción
+
+    menuDashboard.querySelectorAll("a").forEach(enlace => {
+
+        enlace.addEventListener("click", function () {
+
+            menuDashboard.classList.remove("abierto");
+            botonMenu.setAttribute("aria-expanded", "false");
+            botonMenu.setAttribute("aria-label", "Abrir menú");
+            botonMenu.textContent = "☰";
+
+        });
+
+    });
     const CLAVE_PRODUCTOS = "genisys_productos";
     const CLAVE_VENTAS = "genisys_ventas";
     const CLAVE_COMPRAS = "genisys_compras";
