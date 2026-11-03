@@ -149,6 +149,34 @@
                             >
                         </div>
 
+                        <div class="campo-producto">
+                            <label for="stockMinimoProducto">Stock mínimo</label>
+                            <input
+                                type="number"
+                                id="stockMinimoProducto"
+                                min="0"
+                                step="0.01"
+                                value="5"
+                                required
+                            >
+                        </div>
+
+                        <div class="campo-producto">
+                            <label for="disponibleVentaProducto">¿Disponible para la venta?</label>
+                            <select id="disponibleVentaProducto" required>
+                                <option value="true">Sí</option>
+                                <option value="false">No</option>
+                            </select>
+                        </div>
+
+                        <div class="campo-producto">
+                            <label for="disponibleCompraProducto">¿Apto para la compra?</label>
+                            <select id="disponibleCompraProducto" required>
+                                <option value="true">Sí</option>
+                                <option value="false">No</option>
+                            </select>
+                        </div>
+
                     </div>
 
                     <div class="formulario-producto-acciones">
@@ -205,13 +233,15 @@
                             <th>Categoría</th>
                             <th>Unidad</th>
                             <th>Valor unitario</th>
+                            <th>Apto venta</th>
+                            <th>Apto compra</th>
                             <th>Acciones</th>
                         </tr>
                     </thead>
 
                     <tbody id="listaProductos">
                         <tr>
-                            <td colspan="6">Cargando productos...</td>
+                            <td colspan="8">Cargando productos...</td>
                         </tr>
                     </tbody>
                 </table>
